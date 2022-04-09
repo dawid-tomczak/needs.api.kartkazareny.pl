@@ -1,0 +1,61 @@
+{
+    "name": "needs.api.kartkazareny.pl",
+    "version": "1.0.0",
+    "private": true,
+    "nodemonConfig": {
+        "exec": "npm run dev",
+        "watch": [
+            "server/*",
+            "public/*"
+        ],
+        "ignore": [
+            "**/__tests__/**",
+            "*.test.js",
+            "*.spec.js"
+        ]
+    },
+    "scripts": {
+        "start": "npm run prod",
+        "build": "npm-run-all clean transpile",
+        "server": "node ./dist-server/bin/www",
+        "dev": "NODE_ENV=development npm-run-all build server",
+        "prod": "NODE_ENV=production npm-run-all build server",
+        "transpile": "babel ./server --out-dir dist-server",
+        "clean": "rimraf dist-server",
+        "watch:dev": "nodemon",
+        "lint": "eslint .  --ext .js",
+        "lint-fix": "eslint --fix .  --ext .js"
+    },
+    "dependencies": {
+        "@babel/cli": "^7.17.6",
+        "@babel/core": "^7.17.9",
+        "@babel/preset-env": "^7.16.11",
+        "@babel/runtime": "^7.17.9",
+        "cookie-parser": "~1.4.4",
+        "cors": "^2.8.5",
+        "debug": "~2.6.9",
+        "dotenv": "^16.0.0",
+        "express": "~4.16.1",
+        "express-validator": "^6.14.0",
+        "google-spreadsheet": "^3.2.0",
+        "morgan": "~1.9.1",
+        "nodemon": "^2.0.15",
+        "npm-run-all": "^4.1.5",
+        "rimraf": "^3.0.2"
+    },
+    "babel": {
+        "presets": [
+            "@babel/preset-env"
+        ],
+        "plugins": [
+            [
+                "@babel/transform-runtime"
+            ]
+        ]
+    },
+    "_id": "kartkazareny-pl-needs-api@0.0.0",
+    "devDependencies": {
+        "@babel/plugin-transform-runtime": "^7.17.0",
+        "eslint": "^8.13.0"
+    }
+}
